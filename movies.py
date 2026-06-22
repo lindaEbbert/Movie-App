@@ -1,7 +1,9 @@
+import requests.exceptions
 from fuzzywuzzy import process
 from random import randrange
 import matplotlib
 import movie_storage_sql
+from movie_api import get_all_movie_infos_by_title
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
@@ -342,12 +344,18 @@ def get_user_input_rating(prompt_string="\x1b[0mEnter new movie rating (0-10): \
 
 
 def add_movie():
-    """ Takes user input and adds a movie to the database. Prints a success message if the movie was added."""
+    """ Takes user input and adds a movie to the database. Prints a success message if the movie was added
+    and errors if the movie wasn't found or the API is not available."""
     title = get_user_input_title()
-    rating = get_user_input_rating()
-    year = get_user_input_year()
-    movie_storage_sql.add_movie(title, year, rating)
-    print(f"\x1b[0mMovie {title} successfully added")
+    try:
+        movie_information = get_all_movie_infos_by_title(title)
+    except KeyError:
+        print(f"\x1b[31mMovie {title} not found!\x1b[0m")
+    except requests.exceptions.ConnectionError:
+        print(f"\x1b[31mAPI currently not available!\x1b[0m")
+    else:
+        movie_storage_sql.add_movie(title, movie_information["year"], movie_information["rating"], movie_information["poster_url"])
+        print(f"\x1b[0mMovie {title} successfully added")
 
 
 def number_movies_in_database():
