@@ -2,7 +2,7 @@ import requests.exceptions
 from fuzzywuzzy import process
 from random import randrange
 import matplotlib
-import movie_storage_sql
+from movie_storage import movie_storage_sql
 from movie_api import get_all_movie_infos_by_title
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt

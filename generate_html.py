@@ -1,4 +1,4 @@
-from movie_storage_sql import list_movies
+from movie_storage.movie_storage_sql import list_movies
 
 STAR_URL = "https://www.citypng.com/public/uploads/preview/download-star-silhouette-orange-icon-png-735811696934096ugpfr7gzzd.png"
 
@@ -38,7 +38,7 @@ def get_all_movies_info_as_string():
 
 
 def generate_html_file():
-    html_template = read_html_file("movies_template.html")
+    html_template = read_html_file("_static/movies_template.html")
     movies_info = get_all_movies_info_as_string()
     html_output = html_template.replace("__REPLACE_MOVIE_INFO__", movies_info)
     with open("movies.html", "w") as handle:
