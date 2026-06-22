@@ -44,7 +44,6 @@ def add_movie(title, year, rating, poster_url):
             conn.execute(text("INSERT INTO movies (title, year, rating, poster_url) VALUES (:title, :year, :rating, :poster_url)"),
                                {"title": title, "year": year, "rating": rating, "poster_url": poster_url})
             conn.commit()
-            print(f"Movie '{title}' added successfully.")
         except Exception as e:
             print(f"Error: {e}")
 
