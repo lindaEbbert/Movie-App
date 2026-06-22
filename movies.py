@@ -6,6 +6,7 @@ import movie_storage_sql
 from movie_api import get_all_movie_infos_by_title
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from generate_html import generate_html_file
 
 
 def get_dispatcher():
@@ -22,7 +23,8 @@ def get_dispatcher():
         "8": print_movies_sorted_by_rating,
         "9": print_movies_sorted_by_year,
         "10": print_filtered_movies,
-        "11": create_histogram
+        "11": create_histogram,
+        "12": generate_html_file
     }
 
 
@@ -412,7 +414,7 @@ def execute_users_choice(users_choice):
     print()
 
 
-def get_user_input_choice(prompt_string="\nEnter choice (0-11): \x1b[32m"):
+def get_user_input_choice(prompt_string="\nEnter choice (0-12): \x1b[32m"):
     """ Asks the user for a choice until the input is valid.
     :param prompt_string: Prompt to display to the user
     :return: Number of the user's choice (int)"""
@@ -527,7 +529,8 @@ def print_menu():
     print("8.  Movies sorted by rating")
     print("9.  Movies sorted by year")
     print("10. Filter movies")
-    print("11. Create rating histogram\x1b[0m")
+    print("11. Create rating histogram")
+    print("12. Generate website\x1b[0m")
 
 
 def main():

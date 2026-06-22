@@ -43,8 +43,8 @@ def generate_html_file():
     html_output = html_template.replace("__REPLACE_MOVIE_INFO__", movies_info)
     with open("movies.html", "w") as handle:
         handle.write(html_output)
+    print("\x1b[0mWebsite was generated successfully.\x1b[0m")
 
-generate_html_file()
 
 
 

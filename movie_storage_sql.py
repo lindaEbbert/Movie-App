@@ -4,7 +4,7 @@ from sqlalchemy import create_engine, text
 DB_URL = "sqlite:///movies.db"
 
 # Create the database engine
-engine = create_engine(DB_URL, echo=True) # echo=True to see SQL queries in the console
+engine = create_engine(DB_URL, echo=False) # echo=True to see SQL queries in the console
 
 # Create the movies table if it doesn't exist
 with engine.connect() as connection:
