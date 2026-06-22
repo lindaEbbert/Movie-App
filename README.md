@@ -103,14 +103,18 @@ Enter the number of the option you want and follow the prompts.
 
 ## Project Structure
 
-| File | Description |
+| Path | Description |
 | --- | --- |
 | `main.py` | Entry point and menu logic |
 | `movie_api.py` | Fetches movie data from the OMDb API |
-| `movie_storage_sql.py` | Database access layer (SQLAlchemy / SQLite) |
 | `generate_html.py` | Generates the HTML website from the database |
-| `movies_template.html` | HTML template used for the generated site |
-| `style.css` | Styling for the generated website |
+| `movie_storage/movie_storage_sql.py` | Database access layer (SQLAlchemy / SQLite) |
+| `movie_storage/movie_storage.py` | JSON-based storage module |
+| `data/movies.db` | SQLite database holding your movies |
+| `data/movies.json` | JSON data file |
+| `_static/movies_template.html` | HTML template used for the generated site |
+| `_static/style.css` | Styling for the generated website |
+| `movies.html` | The generated website (created by option 12) |
 | `requirements.txt` | Python dependencies |
 
 ## Contributing
