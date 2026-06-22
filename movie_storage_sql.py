@@ -18,13 +18,23 @@ with engine.connect() as connection:
     """))
     connection.commit()
 
-def list_movies():
+def list_movies_dict_by_title():
     """Retrieve all movies from the database."""
     with engine.connect() as connection:
         result = connection.execute(text("SELECT title, year, rating FROM movies"))
         movies = result.fetchall()
 
     return {row[0]: {"year": row[1], "rating": row[2]} for row in movies}
+
+
+def list_movies():
+    """Retrieve all movies from the database."""
+    with engine.connect() as connection:
+        result = connection.execute(text("SELECT title, year, rating FROM movies"))
+        movies = result.fetchall()
+
+    return [{"title": movie.title, "rating": movie.rating, "year": movie.year} for movie in movies]
+
 
 def add_movie(title, year, rating):
     """Add a new movie to the database."""
